@@ -163,10 +163,16 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # Print screen
-#interactive screenshot by pressing printscreen
-bindsym Print exec gnome-screenshot -i
-#crop-area screenshot by pressing Mod + printscreen
-bindsym $mod+Print exec gnome-screenshot -a
+# Screenshots
+bindsym Ctrl+Print exec --no-startup-id maim "/home/$USER/Images/$(date +%Y-%b-%d--%H-%M-%S_maim | tr A-Z a-z).png"
+bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Images/$(date +%Y-%b-%d--%H-%M-%S_maim | tr A-Z a-z).png"
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select "/home/$USER/Images/$(date +%Y-%b-%d--%H-%M-%S_maim | tr A-Z a-z).png"
+
+## Clipboard Screenshots
+bindsym Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
