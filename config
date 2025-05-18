@@ -37,8 +37,8 @@ exec --no-startup-id nm-applet
 # Bluetooth
 exec --no-startup-id blueman-applet
 
-# Dropbox
-exec --no-startup-id dropbox start
+# # Dropbox
+# exec --no-startup-id dropbox start
 
 
 # Use pactl to adjust volume in PulseAudio.
